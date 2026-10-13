@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio - Evan Imanuel Li</title>
+
+    <!-- Bootstrap 5.0.2 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* Kustomisasi Skema Warna & Style */
+      :root {
+        --primary-accent: #737373;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: #333;
+      }
+
+      .btn-orange {
+        background-color: var(--primary-accent);
+        color: #fff;
+        border: none;
+      }
+
+      .btn-orange:hover {
+        background-color: #6a9eff;
+        color: #fff;
+      }
+
+      .text-orange {
+        color: var(--primary-accent);
+      }
+
+      .profile-img-container img {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid #fff;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .bio-icon-box {
+        background-color: #f8f9fa;
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+
+      .bio-icon-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .portfolio-card {
+        border: none;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .portfolio-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .filter-btn.active {
+        background-color: var(--primary-accent) !important;
+        color: #fff !important;
+        border-color: var(--primary-accent) !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR / HEADER -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3"
+    >
+      <div class="container">
+        <a
+          class="navbar-brand fw-bold fs-4 d-flex align-items-center gap-2"
+          href="#"
+        >
+          <span class="bg-dark text-white rounded px-2 py-1 fs-6">EVAN</span>
+          <span>PORTOFOLIO</span>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center gap-2">
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="#about">About Me</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="#testimonials"
+                >Testimonials</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item ms-lg-2">
+              <button
+                class="btn btn-orange px-4 py-2 rounded-3 fw-bold"
+                data-bs-toggle="modal"
+                data-bs-target="#contactModal"
+              >
+                Download CV
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="py-5 bg-white">
+      <div class="container py-4">
+        <div class="row align-items-center flex-column-reverse flex-lg-row">
+          <div class="col-lg-7 text-center text-lg-start mt-4 mt-lg-0">
+            <span class="fw-bold text-muted fs-5">Hi I am</span>
+            <h2 class="fw-bold text-orange mb-1">Evan Imanuel Li</h2>
+            <h1 class="display-3 fw-extrabold text-dark fw-bold mb-3">
+              Web Developer
+            </h1>
+            <p class="lead text-muted mb-4 pe-lg-5">
+              Saya seorang pembelajar yang berfokus pada pengembangan
+              <i>web application</i> serta dunia <i>cybersecurity</i>.
+              Mempelajari pembuatan antarmuka web yang rapi, responsif, dan
+              interaktif.
+            </p>
+            <button
+              class="btn btn-orange px-4 py-2 rounded-3 fw-bold me-2"
+              data-bs-toggle="modal"
+              data-bs-target="#contactModal"
+            >
+              Hire Me
+            </button>
+          </div>
+          <div class="col-lg-5 text-center">
+            <div class="profile-img-container mx-auto">
+              <img
+                src="https://i.ibb.co.com/Cs9XbNtm/Hi-there.jpg"
+                alt="Evan Imanuel Li"
+                class="shadow"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT ME SECTION -->
+    <section id="about" class="py-5 bg-light">
+      <div class="container py-4 text-center">
+        <h2 class="fw-bold mb-2">About Me</h2>
+        <p class="text-muted mx-auto mb-5" style="max-width: 650px">
+          Berfokus pada pengembangan halaman web yang responsif dan berstandar
+          modern serta mempelajari dasar-dasar web security.
+        </p>
+
+        <div class="row g-4">
+          <!-- Box 1: Full Name -->
+          <div class="col-md-4 col-sm-6">
+            <div class="bio-icon-box shadow-sm text-center h-100">
+              <i class="fas fa-user fs-2 text-orange mb-3"></i>
+              <h6 class="fw-bold text-dark mb-1">Full Name</h6>
+              <p class="text-muted mb-0">Evan Imanuel Li</p>
+            </div>
+          </div>
+          <!-- Box 2: Education -->
+          <div class="col-md-4 col-sm-6">
+            <div class="bio-icon-box shadow-sm text-center h-100">
+              <i class="fas fa-graduation-cap fs-2 text-orange mb-3"></i>
+              <h6 class="fw-bold text-dark mb-1">Education</h6>
+              <p class="text-muted mb-0">S1 Informatika</p>
+            </div>
+          </div>
+          <!-- Box 3: Status -->
+          <div class="col-md-4 col-sm-6">
+            <div class="bio-icon-box shadow-sm text-center h-100">
+              <i class="fas fa-briefcase fs-2 text-orange mb-3"></i>
+              <h6 class="fw-bold text-dark mb-1">Pekerjaan / Status</h6>
+              <p class="text-muted mb-0">Mahasiswa</p>
+            </div>
+          </div>
+          <!-- Box 4: Contact -->
+          <div class="col-md-4 col-sm-6">
+            <div class="bio-icon-box shadow-sm text-center h-100">
+              <i class="fas fa-envelope fs-2 text-orange mb-3"></i>
+              <h6 class="fw-bold text-dark mb-1">Contact</h6>
+              <p class="text-muted mb-0">evan@example.com</p>
+            </div>
+          </div>
+          <!-- Box 5: Hobi -->
+          <div class="col-md-4 col-sm-6">
+            <div class="bio-icon-box shadow-sm text-center h-100">
+              <i class="fas fa-book-reader fs-2 text-orange mb-3"></i>
+              <h6 class="fw-bold text-dark mb-1">Hobi</h6>
+              <p class="text-muted mb-0">Membaca & Coding</p>
+            </div>
+          </div>
+          <!-- Box 6: Alamat -->
+          <div class="col-md-4 col-sm-6">
+            <div class="bio-icon-box shadow-sm text-center h-100">
+              <i class="fas fa-map-marker-alt fs-2 text-orange mb-3"></i>
+              <h6 class="fw-bold text-dark mb-1">Alamat</h6>
+              <p class="text-muted mb-0">Tabalong, Kalimantan Selatan</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-5 bg-white">
+      <div class="container text-center py-4">
+        <h2 class="fw-bold mb-2">Services</h2>
+        <p class="text-muted mb-5">
+          Bidang dan keahlian yang sedang saya pelajari serta kembangkan.
+        </p>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm p-4">
+              <div class="text-orange fs-1 mb-3">
+                <i class="fas fa-code"></i>
+              </div>
+              <h5 class="fw-bold">Web Development</h5>
+              <p class="text-muted small mb-0">
+                Membuat dan mengelola struktur antarmuka web menggunakan HTML,
+                CSS, JavaScript, dan Framework Bootstrap.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm p-4">
+              <div class="text-orange fs-1 mb-3">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h5 class="fw-bold">Cyber Security</h5>
+              <p class="text-muted small mb-0">
+                Mempelajari konsep keamanan web application, analisis
+                kerentanan, serta dasar-dasar penetration testing.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm p-4">
+              <div class="text-orange fs-1 mb-3">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <h5 class="fw-bold">Responsive Layout</h5>
+              <p class="text-muted small mb-0">
+                Memastikan tampilan web beradaptasi secara optimal di layar
+                Smartphone, Tablet, hingga Desktop.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="py-5 bg-light">
+      <div class="container py-4 text-center">
+        <h2 class="fw-bold mb-2">My Projects</h2>
+        <p class="text-muted mx-auto mb-4" style="max-width: 600px">
+          Berikut adalah beberapa proyek dan latihan pembuatan aplikasi web yang
+          telah saya kerjakan.
+        </p>
+
+        <!-- Filter Buttons -->
+        <div class="d-flex justify-content-center flex-wrap gap-2 mb-5">
+          <button
+            class="btn btn-outline-secondary rounded-pill px-4 filter-btn active"
+            data-filter="all"
+          >
+            All
+          </button>
+          <button
+            class="btn btn-outline-secondary rounded-pill px-4 filter-btn"
+            data-filter="web"
+          >
+            Web Development
+          </button>
+          <button
+            class="btn btn-outline-secondary rounded-pill px-4 filter-btn"
+            data-filter="app"
+          >
+            App Project
+          </button>
+          <button
+            class="btn btn-outline-secondary rounded-pill px-4 filter-btn"
+            data-filter="cyber"
+          >
+            Cyber Sec
+          </button>
+        </div>
+
+        <!-- Project Grid -->
+        <div class="row g-4 text-start">
+          <!-- Project 1 -->
+          <div class="col-md-4 project-item" data-category="web">
+            <div class="card portfolio-card h-100">
+              <img
+                src="https://i.ibb.co.com/jvNZB9mZ/proyek1.jpg"
+                class="card-img-top"
+                alt="Proyek 1"
+                style="height: 200px; object-fit: cover"
+              />
+              <div class="card-body">
+                <span class="text-orange small fw-bold">Web Development</span>
+                <h5 class="card-title fw-bold mt-1">Proyek 1 - FrameLaravel</h5>
+                <p class="card-text text-muted small">
+                  Website aplikasi berbasis framework Laravel dengan manajemen
+                  database.
+                </p>
+                <button
+                  class="btn btn-sm btn-orange mt-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#projectModal1"
+                >
+                  Detail Proyek
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="col-md-4 project-item" data-category="app">
+            <div class="card portfolio-card h-100">
+              <img
+                src="https://i.ibb.co.com/gb3W2JgK/proyek2.png"
+                class="card-img-top"
+                alt="Proyek 2"
+                style="height: 200px; object-fit: cover"
+              />
+              <div class="card-body">
+                <span class="text-orange small fw-bold">Game Development</span>
+                <h5 class="card-title fw-bold mt-1">Proyek 2 - Game Pixel</h5>
+                <p class="card-text text-muted small">
+                  Pengembangan game pixel sederhana menggunakan logika
+                  interaktif dasar.
+                </p>
+                <button
+                  class="btn btn-sm btn-orange mt-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#projectModal2"
+                >
+                  Detail Proyek
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="col-md-4 project-item" data-category="web">
+            <div class="card portfolio-card h-100">
+              <img
+                src="https://i.ibb.co.com/vCzB3Cxk/proyek3.png"
+                class="card-img-top"
+                alt="Proyek 3"
+                style="height: 200px; object-fit: cover"
+              />
+              <div class="card-body">
+                <span class="text-orange small fw-bold">Frontend Web</span>
+                <h5 class="card-title fw-bold mt-1">
+                  Proyek 3 - Portofolio Web
+                </h5>
+                <p class="card-text text-muted small">
+                  Website portofolio pribadi yang dirancang responsif dengan
+                  Bootstrap 5.
+                </p>
+                <button
+                  class="btn btn-sm btn-orange mt-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#projectModal3"
+                >
+                  Detail Proyek
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimonials" class="py-5 bg-white">
+      <div class="container text-center py-4">
+        <h2 class="fw-bold mb-2">Testimonials</h2>
+        <p class="text-muted mb-5">
+          Ulasan dan umpan balik dari rekan tim maupun mentor.
+        </p>
+
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="card border-0 shadow-sm p-4 bg-light">
+              <i class="fas fa-quote-left fs-1 text-orange mb-3 mx-auto"></i>
+              <p class="fst-italic text-muted mb-3">
+                "Evan menunjukkan progres yang sangat pesat dalam memahami
+                struktur antarmuka web, pembuatan tata letak responsif, dan
+                penggunaan Bootstrap 5 secara rapi."
+              </p>
+              <h6 class="fw-bold mb-0">Rekan Tim Web Development</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION & MODAL TRIGGER -->
+    <section id="contact" class="py-5 bg-light text-center">
+      <div class="container py-4">
+        <h2 class="fw-bold mb-2">Lets Work Together</h2>
+        <p class="text-muted mb-4 mx-auto" style="max-width: 500px">
+          Punya pertanyaan atau tertarik untuk berdiskusi? Klik tombol di bawah
+          ini.
+        </p>
+        <button
+          class="btn btn-orange px-5 py-3 rounded-pill fw-bold shadow-sm"
+          data-bs-toggle="modal"
+          data-bs-target="#contactModal"
+        >
+          <i class="fas fa-envelope me-2"></i> Hubungi Saya (Popup Modal)
+        </button>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white text-center py-4">
+      <div class="container">
+        <p class="mb-0 small">
+          &copy; 2026 Evan Imanuel Li. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- ==================== POPUP MODALS ==================== -->
+
+    <!-- 1. Contact / Hire Me Modal (Syarat Poin 3) -->
+    <div
+      class="modal fade"
+      id="contactModal"
+      tabindex="-1"
+      aria-labelledby="contactModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-0 pb-0">
+            <h5 class="modal-title fw-bold" id="contactModalLabel">
+              Kirim Pesan / Hubungi
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body text-start p-4">
+            <form id="contactForm">
+              <div class="mb-3">
+                <label class="form-label text-muted small fw-bold"
+                  >Nama Lengkap</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Masukkan nama Anda"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-muted small fw-bold"
+                  >Alamat Email</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="nama@email.com"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-muted small fw-bold"
+                  >Pesan Anda</label
+                >
+                <textarea
+                  class="form-control"
+                  rows="3"
+                  placeholder="Tuliskan pesan atau penawaran kerja sama..."
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-orange w-100 fw-bold py-2">
+                Kirim Pesan
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Detail Project Modals -->
+    <div class="modal fade" id="projectModal1" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <h5 class="modal-title fw-bold">Proyek 1 - FrameLaravel</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="https://i.ibb.co.com/jvNZB9mZ/proyek1.jpg"
+              class="img-fluid rounded mb-3"
+              alt="Proyek 1"
+            />
+            <p class="text-muted">
+              Proyek latihan membangun aplikasi berbasis web menggunakan
+              Framework Laravel. Fokus pada routing, controller, dan antarmuka
+              responsif.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="projectModal2" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <h5 class="modal-title fw-bold">Proyek 2 - Game Pixel</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="https://i.ibb.co.com/gb3W2JgK/proyek2.png"
+              class="img-fluid rounded mb-3"
+              alt="Proyek 2"
+            />
+            <p class="text-muted">
+              Game interaktif dengan grafis pixel sederhana yang dibangun untuk
+              melatih logika pemrograman web dan penanganan event.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="projectModal3" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <h5 class="modal-title fw-bold">Proyek 3 - Portofolio Web</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              src="https://i.ibb.co.com/vCzB3Cxk/proyek3.png"
+              class="img-fluid rounded mb-3"
+              alt="Proyek 3"
+            />
+            <p class="text-muted">
+              Proyek pembuatan portofolio pribadi modern menggunakan Bootstrap
+              v5.0 dengan sistem grid responsif dan komponen modal popup.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle dengan Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script Filter Kategori Proyek -->
+    <script>
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const projectItems = document.querySelectorAll(".project-item");
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // Hapus class active dari semua tombol
+          filterBtns.forEach((b) => b.classList.remove("active"));
+          // Tambahkan class active ke tombol yang diklik
+          btn.classList.add("active");
+
+          const filterValue = btn.getAttribute("data-filter");
+
+          projectItems.forEach((item) => {
+            if (
+              filterValue === "all" ||
+              item.getAttribute("data-category") === filterValue
+            ) {
+              item.style.display = "block";
+            } else {
+              item.style.display = "none";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
