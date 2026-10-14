@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evan - Personal Portfolio Landing Page</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #ff7f00;
+            --primary-hover: #e06f00;
+            --blue-accent: #0d6efd;
+            --blue-hover: #0b5ed7;
+            --dark-color: #1a1a1a;
+            --light-bg: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Customization */
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--dark-color) !important;
+        }
+        .navbar-brand span {
+            color: var(--primary-color);
+        }
+        .nav-link {
+            font-weight: 500;
+            color: #555 !important;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+        .btn-primary-custom {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: #fff;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary-custom:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 127, 0, 0.3);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 90px 0 70px;
+            background: linear-gradient(135deg, #fffcf9 0%, #fff 100%);
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        .profile-img-container {
+            position: relative;
+            display: inline-block;
+        }
+        .profile-img {
+            width: 290px;
+            height: 290px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .profile-img:hover {
+            transform: scale(1.04);
+            box-shadow: 0 15px 40px rgba(255, 127, 0, 0.3);
+        }
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background: #fff;
+            color: #333;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* About / Biodata Section Grid */
+        .about-card {
+            background: #fff;
+            border: 1px solid #eaeaea;
+            border-radius: 12px;
+            padding: 22px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .about-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 127, 0, 0.12);
+        }
+        .about-icon {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        /* Services Section */
+        .service-box {
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid #eaeaea;
+        }
+        .service-box:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+            transform: translateY(-5px);
+        }
+        .service-box:hover .service-icon,
+        .service-box:hover .text-muted {
+            color: #fff !important;
+        }
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        /* Projects / Portfolio Section */
+        .project-card {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+            background: #fff;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+        .project-img-wrapper {
+            overflow: hidden;
+            position: relative;
+        }
+        .project-img-wrapper img {
+            transition: transform 0.5s ease;
+        }
+        .project-card:hover .project-img-wrapper img {
+            transform: scale(1.08);
+        }
+        .filter-btn {
+            border-radius: 30px;
+            padding: 8px 22px;
+            font-weight: 500;
+            border: 1px solid #ddd;
+            background: #fff;
+            color: #555;
+            transition: all 0.3s ease;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+
+        /* Testimonials Carousel */
+        .testimonial-section {
+            background-color: var(--light-bg);
+            padding: 80px 0;
+        }
+        .testimonial-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 3px solid var(--primary-color);
+        }
+
+        /* Contact Me Section (Matched to user screenshot) */
+        .contact-me-section {
+            padding: 90px 0;
+            background-color: #f1f3f5;
+            text-align: center;
+        }
+        .contact-me-section h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #212529;
+            margin-bottom: 25px;
+        }
+        .btn-get-in-touch {
+            background-color: #0b409c;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 12px 32px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 12px rgba(11, 64, 156, 0.25);
+            transition: all 0.3s ease;
+        }
+        .btn-get-in-touch:hover {
+            background-color: #082d6e;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(11, 64, 156, 0.35);
+        }
+
+        /* Contact Modal Customization (Matched to modal screenshot) */
+        .contact-modal .modal-content {
+            border-radius: 12px;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        .contact-modal .modal-header {
+            border-bottom: 1px solid #e9ecef;
+            background-color: #f8f9fa;
+            padding: 20px 24px;
+        }
+        .contact-modal .modal-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #212529;
+        }
+        .contact-modal .modal-body {
+            padding: 24px;
+            background-color: #ffffff;
+        }
+        .contact-modal .form-label {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 6px;
+        }
+        .contact-modal .form-control {
+            border-radius: 6px;
+            border: 1px solid #ced4da;
+            padding: 10px 14px;
+            background-color: #fcfcfc;
+            transition: all 0.2s ease;
+        }
+        .contact-modal .form-control:focus {
+            background-color: #ffffff;
+            border-color: #86b7fe;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+        .btn-send-modal {
+            background-color: #0d6efd;
+            color: #fff;
+            font-weight: 600;
+            padding: 8px 24px;
+            border-radius: 6px;
+            border: none;
+            transition: all 0.2s ease;
+        }
+        .btn-send-modal:hover {
+            background-color: #0b5ed7;
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: #aaa;
+            padding: 30px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Navbar Responsif -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">EVAN<span>TI</span></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center mb-2 mb-lg-0 gap-lg-3">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item mt-2 mt-lg-0">
+                        <button class="btn btn-primary-custom px-4 py-2" data-bs-toggle="modal" data-bs-target="#cvModal">Download CV</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <p class="text-uppercase fw-semibold text-muted mb-2">Hi I am</p>
+                    <h1 class="hero-title mb-3">Evan <br><span style="color: var(--primary-color);">Web Developer</span></h1>
+                    <p class="text-muted mb-4 lead">Pengembang Web Kreatif yang berfokus pada desain interaktif, performa tinggi, serta pengalaman pengguna yang mulus dan responsif.</p>
+                    <div class="d-flex justify-content-center justify-content-lg-start gap-3">
+                        <button class="btn btn-primary-custom px-4 py-3" data-bs-toggle="modal" data-bs-target="#contactFormModal">Hire Me</button>
+                        <a href="#projects" class="btn btn-outline-dark px-4 py-3">View Portfolio</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="profile-img-container">
+                        <img src="https://i.ibb.co.com/Cs9XbNtm/Hi-there.jpg" alt="Evan" class="profile-img">
+                    </div>
+                    <div class="social-icons d-flex justify-content-center gap-3 mt-4">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. About Me Grid Section -->
+    <section id="about" class="py-5 bg-white">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">About Me</h2>
+                <p class="text-muted">Perkenalan singkat mengenai latar belakang, keahlian, dan aktivitas saya.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4 col-sm-6">
+                    <div class="about-card d-flex align-items-center gap-3">
+                        <div class="about-icon"><i class="fas fa-user"></i></div>
+                        <div>
+                            <span class="text-muted small d-block">Full Name</span>
+                            <h6 class="mb-0 fw-bold">Evan</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="about-card d-flex align-items-center gap-3">
+                        <div class="about-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div>
+                            <span class="text-muted small d-block">Education</span>
+                            <h6 class="mb-0 fw-bold">STMIK Banjarbaru</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="about-card d-flex align-items-center gap-3">
+                        <div class="about-icon"><i class="fas fa-briefcase"></i></div>
+                        <div>
+                            <span class="text-muted small d-block">Pekerjaan</span>
+                            <h6 class="mb-0 fw-bold">Pelajar</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="about-card d-flex align-items-center gap-3">
+                        <div class="about-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <span class="text-muted small d-block">Contact</span>
+                            <h6 class="mb-0 fw-bold">evan.doe@example.com</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="about-card d-flex align-items-center gap-3">
+                        <div class="about-icon"><i class="fas fa-heart"></i></div>
+                        <div>
+                            <span class="text-muted small d-block">Hobi</span>
+                            <h6 class="mb-0 fw-bold">Membaca Buku, Coding, Traveling</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="about-card d-flex align-items-center gap-3">
+                        <div class="about-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <span class="text-muted small d-block">Alamat</span>
+                            <h6 class="mb-0 fw-bold">Tabalong</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Services Section -->
+    <section id="services" class="py-5 bg-light">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">My Services</h2>
+                <p class="text-muted">Layanan profesional yang saya tawarkan untuk kebutuhan digital Anda.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-box text-center">
+                        <div class="service-icon mb-3"><i class="fas fa-laptop-code"></i></div>
+                        <h4 class="fw-bold mb-3">Web Dev</h4>
+                        <p class="text-muted mb-0">Membangun situs web responsif modern menggunakan teknologi HTML, CSS, JavaScript, dan Bootstrap.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-box text-center">
+                        <div class="service-icon mb-3"><i class="fas fa-mobile-alt"></i></div>
+                        <h4 class="fw-bold mb-3">App Dev</h4>
+                        <p class="text-muted mb-0">Merancang antarmuka dan struktur aplikasi modern yang fleksibel serta dapat diakses di berbagai perangkat.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-box text-center">
+                        <div class="service-icon mb-3"><i class="fas fa-paint-brush"></i></div>
+                        <h4 class="fw-bold mb-3">Web Design</h4>
+                        <p class="text-muted mb-0">Desain visual bersih dan estetis yang disesuaikan dengan kebutuhan identitas brand Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Projects / Portofolio Section -->
+    <section id="projects" class="py-5 bg-white">
+        <div class="container py-4">
+            <div class="text-center mb-4">
+                <h2 class="fw-bold">My Projects</h2>
+                <p class="text-muted">Kumpulan karya dan proyek yang telah saya selesaikan.</p>
+
+                <!-- Filter Buttons -->
+                <div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
+                    <button class="filter-btn active" onclick="filterProjects('all')">All</button>
+                    <button class="filter-btn" onclick="filterProjects('uiux')">UI/UX</button>
+                    <button class="filter-btn" onclick="filterProjects('web')">Web Design</button>
+                    <button class="filter-btn" onclick="filterProjects('app')">App Design</button>
+                    <button class="filter-btn" onclick="filterProjects('graphic')">Graphic Design</button>
+                </div>
+            </div>
+
+            <!-- Project Grid -->
+            <div class="row g-4 mt-3" id="project-grid">
+                <div class="col-lg-4 col-md-6 project-item" data-category="web">
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80" alt="AirCalling Landing Page" class="img-fluid w-100">
+                        </div>
+                        <div class="p-4">
+                            <span class="text-warning small fw-bold text-uppercase d-block mb-1">Web Design</span>
+                            <h5 class="fw-bold mb-3">AirCalling Landing Page Design</h5>
+                            <button class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#projectModal" onclick="setModalContent('AirCalling Landing Page Design', 'Halaman landing page interaktif dengan tata letak bersih dan responsivitas tinggi.', 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80')">Detail Proyek</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 project-item" data-category="uiux">
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Business Landing Page" class="img-fluid w-100">
+                        </div>
+                        <div class="p-4">
+                            <span class="text-warning small fw-bold text-uppercase d-block mb-1">UI/UX Design</span>
+                            <h5 class="fw-bold mb-3">Business Landing Page Design</h5>
+                            <button class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#projectModal" onclick="setModalContent('Business Landing Page Design', 'Desain situs bisnis profesional untuk meningkatkan reputasi perusahaan.', 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80')">Detail Proyek</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 project-item" data-category="app">
+                    <div class="project-card">
+                        <div class="project-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Ecom Web Page" class="img-fluid w-100">
+                        </div>
+                        <div class="p-4">
+                            <span class="text-warning small fw-bold text-uppercase d-block mb-1">App Design</span>
+                            <h5 class="fw-bold mb-3">Ecom Web Page Design</h5>
+                            <button class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#projectModal" onclick="setModalContent('Ecom Web Page Design', 'Antarmuka e-commerce modern dengan katalog produk dinamis.', 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80')">Detail Proyek</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Testimonial Carousel Section -->
+    <section id="testimonials" class="testimonial-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Testimonials</h2>
+                <p class="text-muted">Pendapat dan masukan dari mitra kerja saya.</p>
+            </div>
+
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-card">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Client" class="testimonial-img">
+                            <p class="fst-italic text-muted mb-3">"Evan adalah developer yang sangat cepat dan teliti. Hasil akhir landing page yang dibuat melampaui ekspektasi kami."</p>
+                            <h5 class="fw-bold mb-1">Alexander Wright</h5>
+                            <span class="small text-warning">CEO TechCorp</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Client" class="testimonial-img">
+                            <p class="fst-italic text-muted mb-3">"Desain dan tata letaknya sangat responsif serta nyaman dilihat di ponsel maupun desktop."</p>
+                            <h5 class="fw-bold mb-1">Sarah Jenkins</h5>
+                            <span class="small text-warning">Product Manager</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Contact Me Section (Matches User's Screenshot Design) -->
+    <section id="contact" class="contact-me-section">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <button class="btn btn-get-in-touch" data-bs-toggle="modal" data-bs-target="#contactFormModal">
+                Get in Touch
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Evan. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 8. MODAL FORM KONTAK (Exactly matched with user screenshot) -->
+    <div class="modal fade contact-modal" id="contactFormModal" tabindex="-1" aria-labelledby="contactFormModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 480px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactFormModalLabel">Contact Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="modalContactForm" onsubmit="handleModalSubmit(event)">
+                        <div class="mb-3">
+                            <label for="modalName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="modalName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="modalEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="modalEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="modalSubject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="modalSubject">
+                        </div>
+                        <div class="mb-4">
+                            <label for="modalMessage" class="form-label">Message</label>
+                            <textarea class="form-control" id="modalMessage" rows="4" required></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-send-modal">Send</button>
+                        </div>
+                    </form>
+
+                    <!-- Alert sukses di dalam modal -->
+                    <div id="modalSuccessAlert" class="alert alert-success mt-3 d-none text-center" role="alert">
+                        Message sent successfully!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Detail Proyek -->
+    <div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold" id="modalProjectTitle">Judul Proyek</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalProjectImg" src="" alt="Proyek" class="img-fluid rounded mb-3 w-100" style="max-height: 350px; object-fit: cover;">
+                    <p id="modalProjectDesc" class="text-muted">Deskripsi lengkap proyek...</p>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Download CV -->
+    <div class="modal fade" id="cvModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 p-3">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold">Unduh CV Evan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fas fa-file-pdf fa-4x text-warning mb-3"></i>
+                    <p class="text-muted">Klik tombol di bawah untuk mengunduh CV:</p>
+                    <div class="d-flex justify-content-center gap-3 mt-4">
+                        <button class="btn btn-primary-custom" onclick="alert('Unduhan CV dimulai...')"><i class="fas fa-download me-2"></i> Download CV (PDF)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Set Modal Content Proyek
+        function setModalContent(title, desc, imgSrc) {
+            document.getElementById('modalProjectTitle').innerText = title;
+            document.getElementById('modalProjectDesc').innerText = desc;
+            document.getElementById('modalProjectImg').src = imgSrc;
+        }
+
+        // Filter Proyek
+        function filterProjects(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const items = document.querySelectorAll('.project-item');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Handle Submit Modal Form Kontak
+        function handleModalSubmit(event) {
+            event.preventDefault();
+            const alertBox = document.getElementById('modalSuccessAlert');
+            alertBox.classList.remove('d-none');
+
+            setTimeout(() => {
+                alertBox.classList.add('d-none');
+                document.getElementById('modalContactForm').reset();
+                const modalEl = document.getElementById('contactFormModal');
+                const modal = bootstrap.Modal.getInstance(modalEl);
+                if (modal) modal.hide();
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
